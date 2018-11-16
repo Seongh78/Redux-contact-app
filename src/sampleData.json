@@ -1,0 +1,42 @@
+[
+    {
+        "id"        : 1,
+        "name"      : "C.Ronaldo",
+        "phone"     : "010-1111-2222",
+        "favorite"  : false,
+        "img"       : "",
+        "belong"    : "Juventus"
+    },
+    {
+        "id"        : 2,
+        "name"      : "S.Ramos",
+        "phone"     : "010-2222-2222",
+        "favorite"  : false,
+        "img"       : "",
+        "belong"    : "RM"
+    },
+    {
+        "id"        : 3,
+        "name"      : "Son",
+        "phone"     : "010-3333-2222",
+        "favorite"  : false,
+        "img"       : "",
+        "belong"    : "Tottenham"
+    },
+    {
+        "id"        : 4,
+        "name"      : "E.Hazard",
+        "phone"     : "010-4444-2222",
+        "favorite"  : false,
+        "img"       : "",
+        "belong"    : "Chelsea"
+    },
+    {
+        "id"        : 5,
+        "name"      : "D.Drogba",
+        "phone"     : "010-5555-2222",
+        "favorite"  : false,
+        "img"       : "",
+        "belong"    : "God"
+    }
+]
