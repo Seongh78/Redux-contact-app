@@ -8,15 +8,16 @@ import ImageIcon from '@material-ui/icons/Image';
 
 // import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
 import StarIcon from '@material-ui/icons/Star';
 import Collapse from '@material-ui/core/Collapse';
-import List from '@material-ui/core/List';
 import Button from '@material-ui/core/Button';
 
 // Redux
 import { connect } from 'react-redux';
 import { select, remove, favorite } from '../../REDUX/actions/contacts';
+
+// Router 
+import { Link } from 'react-router-dom';
 
 const styles = theme => ({
   root: {
@@ -46,7 +47,7 @@ class ContactItem extends React.Component {
         const { 
             classes, 
             info,
-            favorite
+            favorite,
         } = this.props;
 
         const {ff} = this.state;
@@ -82,17 +83,19 @@ class ContactItem extends React.Component {
                     timeout="auto" 
                     // unmountOnExit
                 >
-                    <Button 
-                        variant="outlined"
-                        style={{
-                            width:'50%', 
-                            borderRadius:0, 
-                            borderLeft:'none', 
-                            textAlign:'center',
-                        }}
-                    >
-                        수정
-                    </Button>
+                    <Link to={`/contacts/${info.id}`}>
+                        <Button 
+                            variant="outlined"
+                            style={{
+                                width:'50%', 
+                                borderRadius:0, 
+                                borderLeft:'none', 
+                                textAlign:'center',
+                            }}
+                        >
+                            편집
+                        </Button>
+                    </Link>
                     <Button 
                         variant="outlined"
                         style={{

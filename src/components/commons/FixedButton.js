@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
+import SaveIcon from '@material-ui/icons/Save';
+
 
 
 const styles = theme => ({
@@ -14,25 +16,59 @@ const styles = theme => ({
   },
 });
 
-function FixedButton(props) {
-  const { classes } = props;
+
+
+
+
+const FixedButton = props => {
+  const { 
+    classes, 
+    style, 
+    iconName, 
+    onClick 
+  } = props;
+  let icon=null;
+
+  switch(iconName){
+    case "save":
+      icon = <SaveIcon />
+    break;
+    case "add":
+    default:
+      icon = <AddIcon />
+    break;  
+
+  }
+  
   return (
-    <div>
+    
         <Button 
-            style={{position:'fixed', bottom:'13px', right:'7px'}} 
+            style={style} 
             variant="fab" 
             color="primary" 
             aria-label="Add" 
             className={classes.button}
+            onClick={onClick}
         >
-            <AddIcon />
+            {icon}
         </Button>
-    </div>
+    
   );
 }
 
+// props 타입 설정
 FixedButton.propTypes = {
   classes: PropTypes.object.isRequired,
+};
+
+// props 기본값 설정
+FixedButton.defaultProps = {
+  style: {
+    position:'fixed', 
+    bottom:'13px', 
+    right:'7px'
+  },
+  iconName: 'add'
 };
 
 export default withStyles(styles)(FixedButton);

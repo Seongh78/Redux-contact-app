@@ -30,9 +30,10 @@ export const select = id => {
  * 
  * 
  */
-export const create = () => {
+export const create = (value) => {
     return { 
-        type: CREATE 
+        type: CREATE,
+        value
     }
 }
 

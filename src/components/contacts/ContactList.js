@@ -3,15 +3,20 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 
-
+// contacts
 import ContactItem from './ContactItem';
-import { SearchForm, ResponsiveDialog } from '../commons';
 
-// import sampleData from '../../sampleData.json'
+// commons
+import { 
+  SearchForm, 
+  FixedButton, 
+} from '../commons';
 
 // Redux
 import { connect } from 'react-redux';
-import { all } from '../../REDUX/actions/contacts';
+
+// Router 
+import { Link } from 'react-router-dom';
 
 // CSS
 const styles = theme => ({
@@ -27,32 +32,55 @@ class ContactList extends React.Component {
     keyword: ''
   }
   
-  shouldComponentUpdate(nextProps, nextState) {
-        return true;
-    }
-
-
+  /**
+   * 검색어 변경
+   */
   handleChangeKeyword = keyword => {
     this.setState({keyword})
   }
   
+  /**
+   * Render
+   */
   render() {
-    const { classes } = this.props;
+    const { classes, match } = this.props;
     const { keyword } = this.state;
 
-    const contacts = (keyword) ? this.props.contacts.filter(c => c.name.match(keyword) || c.phone.match(keyword)) : this.props.contacts;
+    // 검색 필터
+    let contacts = (
+      (keyword) 
+      ? this.props.contacts.filter(c => c.name.match(keyword) || c.phone.match(keyword)) 
+      : this.props.contacts
+    );
+    
+    if(match.path === '/favorite'){
+      contacts = contacts.filter(c => c.favorite===true)
+    }
 
-    const items = contacts.map(item => <ContactItem key={item.id} info={item} favorite={item.favorite} /> )
-
-    console.log(items);
+    const items = contacts.map(item => (
+        <ContactItem 
+          key={item.id} 
+          info={item} 
+          favorite={item.favorite} 
+        />
+      ))
     
     return (
       <div className={classes.root} style={{zIndex:'89', width:'100%', margin:0}}>
         <SearchForm onChange={this.handleChangeKeyword} />
-        <List>
-          {items}
-        </List>
-        {/* <ResponsiveDialog isOpen={false} /> */}
+        {
+          (items.length<1) ? 
+          <div style={{width:'100%', textAlign:'center', marginTop:'10px'}}>
+            연락처가 없습니다.
+          </div>:
+          <List>
+            {items}
+          </List>
+        }
+
+        <Link to="/create">
+          <FixedButton />
+        </Link>
       </div>
     );
   }

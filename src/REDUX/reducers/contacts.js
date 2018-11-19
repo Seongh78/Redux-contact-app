@@ -28,7 +28,11 @@ const contacts = (state = initialState, action) => {
         
         // 생성
         case types.CREATE:
-            return state;
+            let input = action.value;
+            input.id = state[state.length-1].id + 1; // id생성
+            const newState = state.concat(input)
+            
+            return newState;
         
         // 수정
         case types.UPDATE:

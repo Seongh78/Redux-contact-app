@@ -22,7 +22,10 @@ class ResponsiveDialog extends React.Component {
   };
 
   render() {
-    const { fullScreen, isOpen } = this.props;
+    const { 
+      // fullScreen, 
+      isOpen 
+    } = this.props;
 
     return (
       <div>
