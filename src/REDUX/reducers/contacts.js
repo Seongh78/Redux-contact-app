@@ -4,20 +4,10 @@
  * reducers/index.js
  */
 import * as types from '../actions/contacts';
-import { combineReducers } from 'redux';
 import sampleData from '../../sampleData.json'
 
 
 const initialState = sampleData;
-// const initialState = {
-//     "id"        : null,
-//     "name"      : "",
-//     "phone"     : "",
-//     "favorite"  : false,
-//     "img"       : "",
-//     "belong"    : ""
-// };
-console.log("Reducers : ",initialState);
 
 
 const contacts = (state = initialState, action) => {
@@ -59,10 +49,4 @@ const contacts = (state = initialState, action) => {
 };
 
 
-
-
-const contactApp = combineReducers({
-    contacts
-});
-
-export default contactApp;
+export default contacts;

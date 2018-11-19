@@ -7,9 +7,10 @@ import { BrowserRouter } from 'react-router-dom';
 // Redux
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import contactApp from './REDUX/reducers/contacts';
+// import contactApp from './REDUX/reducers/contacts';
+import reducers from './REDUX/reducers';
 
-const store = createStore(contactApp);
+const store = createStore(reducers);
 
 ReactDOM.render(
     <Provider store = {store}>
