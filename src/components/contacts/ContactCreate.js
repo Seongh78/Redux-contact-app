@@ -41,17 +41,41 @@ class ContactCreate extends React.Component {
         }
     }
 
+    /**
+     * LifeCycle - DOM생성 전
+     */
+    componentWillMount(){
+        const { id } = this.props.match.params;
+        const { contacts } = this.props;
+        // 수정일 경우 
+        if(id){
+            const rid = contacts.findIndex(c => c.id === Number(id))
+            this.setState({input:contacts[rid]})
+        }
+    }
+
+    /**
+     * 입력값
+     */
     handleChange = e => {
         let { input } = this.state;
         input[e.target.name] = e.target.value;
         this.setState({input})
     }
+
+    /**
+     * 즐겨찾기 토글
+     */
     handleToggleFavorite = e => {
         let { input } = this.state;
         input.favorite = !input.favorite;
         this.setState({input})
         
     }
+
+    /**
+     * 저장
+     */
     handleSave = () => {
         const { input } = this.state;
         // 예외검사
@@ -67,11 +91,13 @@ class ContactCreate extends React.Component {
         
     }
 
-
-  
+    /**
+     * 렌더링
+     */
     render() {
         const { input } = this.state;
         
+        console.log(this.props.match);
         
         return (
             <div style={{padding:"3px 15px 7px 15px"}}>
@@ -133,6 +159,12 @@ let mapDispatchToProps = (dispatch) => {
   }
 }
 
-ContactCreate = connect(undefined, mapDispatchToProps)(ContactCreate);
+let mapStateToProps = (state) => {
+    return {
+        contacts: state.contacts
+    }
+  }
+
+ContactCreate = connect(mapStateToProps, mapDispatchToProps)(ContactCreate);
 
 export default withStyles(styles)(ContactCreate);
