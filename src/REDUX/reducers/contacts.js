@@ -6,7 +6,7 @@
 import * as types from '../actions/contacts';
 import sampleData from '../../sampleData.json'
 
-
+// 기본값 설정
 const initialState = sampleData;
 
 
@@ -27,10 +27,10 @@ const contacts = (state = initialState, action) => {
         // 수정
         case types.UPDATE:
             const rid = state.findIndex(s => s.id === 1);
+            // const sss = state.slice()
             const data = state.slice(0,rid).concat(action.value).concat(state.slice(rid+1));
-            console.log("Reducer: ", data);
             
-            return state;
+            return data;
         
         // 삭제
         case types.REMOVE:

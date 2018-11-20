@@ -50,7 +50,14 @@ class ContactCreate extends React.Component {
         // 수정일 경우 
         if(id){
             const rid = contacts.findIndex(c => c.id === Number(id))
-            this.setState({input:contacts[rid]})
+            const input = {
+                id: contacts[rid].id,
+                name: contacts[rid].name,
+                phone: contacts[rid].phone,
+                belong: contacts[rid].belong,
+                favorite: contacts[rid].favorite
+            }
+            this.setState({input})
         }
     }
 
@@ -82,7 +89,7 @@ class ContactCreate extends React.Component {
         // 예외검사
         if(
             !this.initData.name.test(input.name)     || !input.name  ||
-            // !this.initData.phone.test(input.phone)   || !input.phone ||
+            !this.initData.phone.test(input.phone)   || !input.phone ||
             !this.initData.belong.test(input.belong) || !input.belong 
         ){
             return alert('입력오류!!');
@@ -105,10 +112,9 @@ class ContactCreate extends React.Component {
     render() {
         const { input } = this.state;
         
-        console.log(this.props.match);
-        
         return (
             <div style={{padding:"3px 15px 7px 15px"}}>
+                {/* 이름 */}
                 <TextField
                     style={{padding:0, marginTop:'10px'}}
                     label="Name"
@@ -119,6 +125,7 @@ class ContactCreate extends React.Component {
                     onChange={this.handleChange}
                 />
                 <br/>
+                {/* 연락처 */}
                 <TextField
                     style={{padding:0, marginTop:'10px'}}
                     label="Phone number"
@@ -128,6 +135,7 @@ class ContactCreate extends React.Component {
                     name="phone"
                     onChange={this.handleChange}
                 />
+                {/* 소속 */}
                 <TextField
                     style={{padding:0, marginTop:'10px'}}
                     label="Belong"
@@ -137,7 +145,7 @@ class ContactCreate extends React.Component {
                     name="belong"
                     onChange={this.handleChange}
                 />
-
+                {/* 즐겨찾기 */}
                 <FormControlLabel
                     control={
                         <Switch
@@ -150,24 +158,33 @@ class ContactCreate extends React.Component {
                     }
                     label="Favorite"
                 />
-
+                {/* 저장버튼 */}
                 <FixedButton iconName="save" onClick={this.handleSave} />
             </div>
         );
     }// render
-}
+}// class
 
+/**
+ * Default Props
+ */
 ContactCreate.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
+/**
+ * 발행
+ */
 let mapDispatchToProps = (dispatch) => {
-  return {
-      onCreate: contact => dispatch(create(contact)),
-      onUpdate: (id,contact) => dispatch(update(id,contact))
-  }
+    return {
+        onCreate: contact => dispatch(create(contact)),
+        onUpdate: (id,contact) => dispatch(update(id,contact))
+    }
 }
 
+/**
+ * 구독
+ */
 let mapStateToProps = (state) => {
     return {
         contacts: state.contacts
