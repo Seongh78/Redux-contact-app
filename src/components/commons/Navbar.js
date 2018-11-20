@@ -38,18 +38,16 @@ class MenuAppBar extends React.Component {
     anchorEl: null,
   };
 
+  /**
+   * Change handle
+   */
   handleChange = event => {
     this.setState({ auth: event.target.checked });
   };
-
-  handleMenu = event => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
-
-  handleClose = () => {
-    this.setState({ anchorEl: null });
-  };
   
+  /**
+   * SideMenu toggle
+   */
   toggleDrawer = (side, open) => () => {
     this.setState({
       [side]: open,
@@ -62,32 +60,33 @@ class MenuAppBar extends React.Component {
 
 
     const sideList = (
-        <div className={classes.list}>
-          <List>
-            <NavLink to="/" >
-              <ListItem button >
-                <ListItemIcon>
-                    <MailIcon />
-                </ListItemIcon>
-                <ListItemText primary="홈" />
-              </ListItem>
-            </NavLink>
+      <div className={classes.list}>
+        <List>
+          {/* 홈 */}
+          <NavLink to="/" >
+            <ListItem button >
+              <ListItemIcon>
+                  <MailIcon />
+              </ListItemIcon>
+              <ListItemText primary="홈" />
+            </ListItem>
+          </NavLink>
 
-            <Divider />
-            
-            <NavLink to="/favorite" >
-              <ListItem button >
-                <ListItemIcon>
-                  <InboxIcon /> 
-                </ListItemIcon>
-                <ListItemText primary="즐겨찾기" />
-              </ListItem>
-            </NavLink>
-            
-          </List>
-        </div>
-      );
-
+          <Divider />
+          
+          {/* 즐겨찾기 */}
+          <NavLink to="/favorite" >
+            <ListItem button >
+              <ListItemIcon>
+                <InboxIcon /> 
+              </ListItemIcon>
+              <ListItemText primary="즐겨찾기" />
+            </ListItem>
+          </NavLink>
+          
+        </List>
+      </div>
+    );
 
 
     return (

@@ -17,12 +17,10 @@ class ContactDetail extends React.Component {
   state = {
     keyword: ''
   }
-  
-  shouldComponentUpdate(nextProps, nextState) {
-        return true;
-    }
 
-
+  /**
+   * 
+   */
   handleChangeKeyword = keyword => {
     this.setState({keyword})
   }

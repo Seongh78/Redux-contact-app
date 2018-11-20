@@ -18,6 +18,9 @@ class SimpleBottomNavigation extends React.Component {
     value: 0,
   };
 
+  /**
+   * Chage handle
+   */
   handleChange = (event, value) => {
     this.setState({ value });
   };

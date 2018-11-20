@@ -10,16 +10,14 @@ import {
 } from './components/containers';
 
 
-
 class App extends Component {
   render() {
     return (
       <div className="App">
+        {/* 네비 */}
         <Navbar className="App-header" />
-
+        {/* 라우터 */}
         <Hub />
-        
-        
       </div>
     );
   }

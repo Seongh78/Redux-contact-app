@@ -53,17 +53,19 @@ class ContactList extends React.Component {
       : this.props.contacts
     );
     
+    // 즐겨찾기 항목 확인
     if(match.path === '/favorite'){
       contacts = contacts.filter(c => c.favorite===true)
     }
 
+    // 리스트 생성
     const items = contacts.map(item => (
-        <ContactItem 
-          key={item.id} 
-          info={item} 
-          favorite={item.favorite} 
-        />
-      ))
+      <ContactItem 
+        key={item.id} 
+        info={item} 
+        favorite={item.favorite} 
+      />
+    ))
     
     return (
       <div className={classes.root} style={{zIndex:'89', width:'100%', margin:0}}>
@@ -82,8 +84,8 @@ class ContactList extends React.Component {
           <FixedButton />
         </Link>
       </div>
-    );
-  }
+    );// return
+  }// render
 }
 
 ContactList.propTypes = {

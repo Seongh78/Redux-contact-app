@@ -6,7 +6,6 @@ import AddIcon from '@material-ui/icons/Add';
 import SaveIcon from '@material-ui/icons/Save';
 
 
-
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
@@ -15,9 +14,6 @@ const styles = theme => ({
     marginRight: theme.spacing.unit,
   },
 });
-
-
-
 
 
 const FixedButton = props => {
@@ -29,6 +25,7 @@ const FixedButton = props => {
   } = props;
   let icon=null;
 
+  // 버튼선택 - props값으로 
   switch(iconName){
     case "save":
       icon = <SaveIcon />
@@ -41,18 +38,16 @@ const FixedButton = props => {
   }
   
   return (
-    
-        <Button 
-            style={style} 
-            variant="fab" 
-            color="primary" 
-            aria-label="Add" 
-            className={classes.button}
-            onClick={onClick}
-        >
-            {icon}
-        </Button>
-    
+    <Button 
+        style={style} 
+        variant="fab" 
+        color="primary" 
+        aria-label="Add" 
+        className={classes.button}
+        onClick={onClick}
+    >
+        {icon}
+    </Button>
   );
 }
 

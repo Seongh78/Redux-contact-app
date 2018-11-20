@@ -27,6 +27,7 @@ const contacts = (state = initialState, action) => {
         // 수정
         case types.UPDATE:
             const rid = state.findIndex(s => s.id === action.id);
+            // 배열 치환 [1,2,3,4,5] => [1,2] + [3] + [4,5]
             const data = state.slice(0,rid).concat(action.value).concat(state.slice(rid+1));
             
             return data;
@@ -35,6 +36,7 @@ const contacts = (state = initialState, action) => {
         case types.REMOVE:
             if( window.confirm("삭제하시겠습니까?") )
                 return state.filter(item => item.id !== action.id);
+
             return state;
         
         // 즐겨찾기
@@ -42,7 +44,6 @@ const contacts = (state = initialState, action) => {
             const fid = state.findIndex(s => s.id === action.id);
             state[fid].favorite = !state[fid].favorite;
             
-            // return state;
             return [...state];
 
         // 전체검색

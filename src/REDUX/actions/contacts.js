@@ -4,12 +4,12 @@
  * 
  */
 
-export const SELECT = 'SELECT';
-export const CREATE = 'CREATE';
-export const UPDATE = 'UPDATE';
-export const REMOVE = 'REMOVE';
-export const FAVORITE = 'FAVORITE';
-export const ALL = 'ALL';
+export const SELECT = 'SELECT'; // 단일조회
+export const CREATE = 'CREATE'; // 생성
+export const UPDATE = 'UPDATE'; // 수정
+export const REMOVE = 'REMOVE'; // 삭제
+export const FAVORITE = 'FAVORITE'; // 즐겨찾기 토글
+export const ALL = 'ALL'; // 전체조회
 
 // import sampleData from '../sampleData.json'
 

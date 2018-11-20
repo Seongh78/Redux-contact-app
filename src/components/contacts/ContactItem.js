@@ -36,7 +36,10 @@ class ContactItem extends React.Component {
         ff:false
     }
 
-    fff = () => {
+    /**
+     * 버튼 토글
+     */
+    bottomButtonToggle = () => {
         this.setState(prev => ({
             ff: !prev.ff
         }))
@@ -56,16 +59,15 @@ class ContactItem extends React.Component {
             <div className={classes.root}>
                 <ListItem 
                     button 
-                    // onClick={()=>this.props.onSelect(info.id)}
                     style={{zIndex:'9'}}
                 >
-                    <Avatar onClick={()=>this.fff()}>
+                    <Avatar onClick={()=>this.bottomButtonToggle()}>
                         <ImageIcon />
                     </Avatar>
                     <ListItemText 
-                        primary={info.name+'['+info.id+']'} 
+                        primary={info.name} 
                         secondary={info.phone} 
-                        onClick={()=>this.fff()}
+                        onClick={()=>this.bottomButtonToggle()}
                     />
                     <IconButton  
                         aria-label="Delete" 

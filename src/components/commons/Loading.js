@@ -14,7 +14,6 @@ function Loading(props) {
   return (
     <div style={{width:'100%', textAlign:'center'}}>
       <CircularProgress className={classes.progress} />
-      {/* <CircularProgress className={classes.progress} color="secondary" /> */}
     </div>
   );
 }
