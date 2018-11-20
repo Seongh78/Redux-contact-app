@@ -12,6 +12,9 @@ import reducers from './REDUX/reducers';
 
 const store = createStore(reducers);
 
+// deep copy 함수 - 전역설정 필요
+const clone = input => JSON.parse(JSON.stringify(input))
+
 ReactDOM.render(
     <Provider store = {store}>
         <BrowserRouter>
@@ -24,3 +27,4 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
 // serviceWorker.unregister();
+

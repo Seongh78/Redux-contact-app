@@ -60,6 +60,7 @@ class ContactCreate extends React.Component {
             this.setState({
                 input : JSON.parse(JSON.stringify(contacts[rid]))
             })
+            
         }
     }
 
