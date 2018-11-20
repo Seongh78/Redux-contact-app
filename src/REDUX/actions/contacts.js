@@ -30,7 +30,7 @@ export const select = id => {
  * 
  * 
  */
-export const create = (value) => {
+export const create = value => {
     return { 
         type: CREATE,
         value
@@ -42,10 +42,11 @@ export const create = (value) => {
  * 
  * @param {*} id 
  */
-export const update = id => {
+export const update = (id, value) => {
     return { 
         type: UPDATE,
-        id: id
+        id,
+        value
     }
 }
 

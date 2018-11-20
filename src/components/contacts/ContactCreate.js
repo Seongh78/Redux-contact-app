@@ -7,7 +7,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 // Redux
 import { connect } from 'react-redux';
-import { create } from '../../REDUX/actions/contacts';
+import { create, update } from '../../REDUX/actions/contacts';
 
 // commons
 import { 
@@ -78,6 +78,7 @@ class ContactCreate extends React.Component {
      */
     handleSave = () => {
         const { input } = this.state;
+        
         // 예외검사
         if(
             !this.initData.name.test(input.name)     || !input.name  ||
@@ -86,7 +87,14 @@ class ContactCreate extends React.Component {
         ){
             return alert('입력오류!!');
         }
-        this.props.onCreate(input);
+        // 수정 || 생성
+        if(input.id){
+            alert(input.id)
+            this.props.onUpdate(input.id, input)
+        }else{
+            this.props.onCreate(input);
+        }
+        
         this.props.history.push('/');
         
     }
@@ -155,7 +163,8 @@ ContactCreate.propTypes = {
 
 let mapDispatchToProps = (dispatch) => {
   return {
-      onCreate: contact => dispatch(create(contact))
+      onCreate: contact => dispatch(create(contact)),
+      onUpdate: (id,contact) => dispatch(update(id,contact))
   }
 }
 
@@ -163,7 +172,7 @@ let mapStateToProps = (state) => {
     return {
         contacts: state.contacts
     }
-  }
+}
 
 ContactCreate = connect(mapStateToProps, mapDispatchToProps)(ContactCreate);
 
