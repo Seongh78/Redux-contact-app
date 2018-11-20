@@ -15,6 +15,7 @@ const Hub = () => {
           <Route path="/" component={ContactList} exact />
           <Route path="/favorite" component={ContactList} exact />
           <Route path="/create" component={ContactCreate} exact />
+          <Route path="/contacts" component={ContactList} exact />
           <Route path="/contacts/:id" component={ContactCreate} />
         </Fragment>
     );
