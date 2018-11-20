@@ -27,7 +27,6 @@ const contacts = (state = initialState, action) => {
         // 수정
         case types.UPDATE:
             const rid = state.findIndex(s => s.id === 1);
-            // const sss = state.slice()
             const data = state.slice(0,rid).concat(action.value).concat(state.slice(rid+1));
             
             return data;

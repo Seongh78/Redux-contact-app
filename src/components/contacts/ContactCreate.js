@@ -50,14 +50,16 @@ class ContactCreate extends React.Component {
         // 수정일 경우 
         if(id){
             const rid = contacts.findIndex(c => c.id === Number(id))
-            const input = {
-                id: contacts[rid].id,
-                name: contacts[rid].name,
-                phone: contacts[rid].phone,
-                belong: contacts[rid].belong,
-                favorite: contacts[rid].favorite
-            }
-            this.setState({input})
+            // const input = {
+            //     id      : contacts[rid].id,
+            //     name    : contacts[rid].name,
+            //     phone   : contacts[rid].phone,
+            //     belong  : contacts[rid].belong,
+            //     favorite: contacts[rid].favorite
+            // }
+            this.setState({
+                input : JSON.parse(JSON.stringify(contacts[rid]))
+            })
         }
     }
 
@@ -96,7 +98,6 @@ class ContactCreate extends React.Component {
         }
         // 수정 || 생성
         if(input.id){
-            alert(input.id)
             this.props.onUpdate(input.id, input)
         }else{
             this.props.onCreate(input);
