@@ -53,7 +53,7 @@ class ContactItem extends React.Component {
         const {ff} = this.state;
 
         return (
-            <div className={classes.root} >
+            <div className={classes.root}>
                 <ListItem 
                     button 
                     // onClick={()=>this.props.onSelect(info.id)}
@@ -63,7 +63,7 @@ class ContactItem extends React.Component {
                         <ImageIcon />
                     </Avatar>
                     <ListItemText 
-                        primary={info.name} 
+                        primary={info.name+'['+info.id+']'} 
                         secondary={info.phone} 
                         onClick={()=>this.fff()}
                     />
